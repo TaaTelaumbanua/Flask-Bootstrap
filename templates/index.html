@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Flask</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header text-center text-white">
+            </h1>Selamat Datang di Aplikasi Flask!</h1>
+            </div>
+            <div class="card-body">
+                <!-- Form input data -->
+                <form method="POST" action="/">
+                    <div class="mb-4">
+                        <label for="nama" class="form-label"><i class="fas fa-user me-2"></i>Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="pesan" class="form-label"><i class="fas fa-comment me-2"></i>Pesan</label>
+                        <textarea class="form-control" id="pesan" name="pesan" rows="3" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Kirim</button>
+                    </div>
+                </form>
+                
+                <!-- Menampilkan data yang telah dikirim -->
+                {% if form_submitted %}
+                <div class="mt-4">
+                    <div class="alert alert-success">
+                        <h4><i class="fas fa-check-circle me-2"></i>Data yang dikirim:</h4>
+                        <p><strong><i class="fas fa-user me-2"></i>Nama:</strong> {{ nama }}</p>
+                        <p><strong><i class="fas fa-comment me-2"></i>Pesan:</strong> {{ pesan }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="text-center mt-4 text-muted">
+            <small>&copy; 2025 Aplikasi Flask | Dibuat dengan sederhana<i class="fas fa-heart text-danger"></i></small>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
